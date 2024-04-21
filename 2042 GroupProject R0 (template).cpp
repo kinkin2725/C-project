@@ -48,14 +48,15 @@ int main()
 		cout << "*****************\n";
 		cout << "Option (1 - 6): ";
 		cin >> option;
+		cout << "\n\n"
 		switch (option)
 		{
-			case '1':R1();
-			case '2':R2();
-			case '3':R3();
-			case '4':R4();
-			case '5':R5();
-			case '6':R6();
+			case '1':R1(); break;
+			case '2':R2(); break;
+			case '3':R3(); break;
+			case '4':R4(); break;
+			case '5':R5(); break;
+			case '6':R6(); break;
 		}
 	} while (option != '1' && option != '2' && option != '3' && option != '4' && option != '5' && option != '6');
 
