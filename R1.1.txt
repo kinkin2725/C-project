@@ -7,7 +7,7 @@ char giftDescription[15][100] = { "LG Internet TV","Pionner Hifi Set","Sony DVD 
 char CustomerID[10][20] = { "Tommy2015","DavidChan","Luna123","TigerMan","Max5678","Neo2000","CCTang","EchoWong","Rubychow","Ivy2023" };
 int Price[15] = { 3900,2400,400,1500,480,1800,600,450,50,50,100,200,350,250,800 };
 int pointsRequired[15] = { 19000,11500,2000,7300,2400,8800,2900,2250,250,250,500,960,1750,1250,3900 };
-char Rank[10][10] = { "B","B","B","B","S","S","S","G","G","G", };
+char CustomerRank[10][2] = { "B","B","B","B","S","S","S","G","G","G", };
 int pointsBalance[10] = {8500,22800,650,14000,2580,8000,33554,8650,28000,12340};
 
 void R1()
@@ -27,7 +27,7 @@ void R1()
 	cout << left;
 	for (int i = 0; i < 10; i++)
 	{
-		cout << setw(17) << CustomerID[i] << setw(9) << Rank[i] << pointsBalance[i] << endl;
+		cout << setw(17) << CustomerID[i] << setw(9) << CustomerRank[i] << pointsBalance[i] << endl;
 	}
 }
 
