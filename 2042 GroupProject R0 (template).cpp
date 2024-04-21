@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <iomanip>
 using namespace std;
+
 void R1()
 {
 	//insert your code here
