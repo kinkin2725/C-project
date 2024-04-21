@@ -29,6 +29,7 @@ void R1()
 	{
 		cout << setw(17) << CustomerID[i] << setw(9) << CustomerRank[i] << pointsBalance[i] << endl;
 	}
+	cout << "\n\n";
 }
 
 int main()
