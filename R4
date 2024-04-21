@@ -31,13 +31,13 @@ void selectionSort(int list[], int listSize)
 void R4(string InputID)
 {
 
-	for (int i = 0; i < 10; i++)
+	for (int j = 0; j < 10; j++)
 	{
-		if (InputID == CustomerID[i])
+		if (InputID == CustomerID[j])
 		{
 			int option;
 			char category;
-			cout << "Action for Customer ID: " << CustomerID[i] << endl;
+			cout << "Action for Customer ID: " << CustomerID[j] << endl;
 			cout << "***** Customer View Menu *****" << endl;
 			cout << "[1] Earn CC Points" << endl;
 			cout << "[2] Redeem Gifts" << endl;
@@ -51,20 +51,18 @@ void R4(string InputID)
 			case 1:
 				cout << "Input amount of money spent: ";
 				cin >> money;
-				pointsBalance[i] = money / 250 + pointsBalance[i];
-				cout << "New Points Balance " << pointsBalance[i] << endl;
+				pointsBalance[j] = money / 250 + pointsBalance[j];
+				cout << "New Points Balance " << pointsBalance[j] << endl;
 				R4(InputID);
 			case 2:
-				selectionSort(Price,15);
-				selectionSort(pointsRequired, 15);
-				if (CustomerRank[i][0] == 'S')
+				if (CustomerRank[j][0] == 'S')
 				{
 					for (int i = 0; i < 15; i++)
 					{
 						pointsRequired[i] *= 0.95;
 					}
 				}
-				else if (CustomerRank[i][0] == 'G')
+				else if (CustomerRank[j][0] == 'G')
 				{
 					for (int i = 0; i < 15; i++)
 					{
@@ -80,16 +78,21 @@ void R4(string InputID)
 					cout << "************************************************************************************************" << endl;
 					for (int i = 0; i < 3; i++)
 					{
-						cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+						if (pointsBalance[j] > pointsRequired[i])
+						{
+							cout << "!" << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+						}
+						else
+							cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
 					}
-					if (CustomerRank[i][0] == 'S')
+					if (CustomerRank[j][0] == 'S')
 					{
 						for (int i = 0; i < 15; i++)
 						{
 							pointsRequired[i] = pointsRequired[i]*(100.0/95.0);
 						}
 					}
-					else if (CustomerRank[i][0] == 'G')
+					else if (CustomerRank[j][0] == 'G')
 					{
 						for (int i = 0; i < 15; i++)
 						{
@@ -102,16 +105,21 @@ void R4(string InputID)
 					cout << "************************************************************************************************" << endl;
 					for (int i = 3; i < 8; i++)
 					{
-						cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+						if (pointsBalance[j] > pointsRequired[i])
+						{
+							cout << "!" << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+						}
+						else
+							cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
 					}
-					if (CustomerRank[i][0] == 'S')
+					if (CustomerRank[j][0] == 'S')
 					{
 						for (int i = 0; i < 15; i++)
 						{
 							pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
 						}
 					}
-					else if (CustomerRank[i][0] == 'G')
+					else if (CustomerRank[j][0] == 'G')
 					{
 						for (int i = 0; i < 15; i++)
 						{
@@ -124,16 +132,21 @@ void R4(string InputID)
 					cout << "************************************************************************************************" << endl;
 					for (int i = 8; i < 12; i++)
 					{
-						cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+						if (pointsBalance[j] > pointsRequired[i])
+						{
+							cout << "!" << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+						}
+						else
+							cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
 					}
-					if (CustomerRank[i][0] == 'S')
+					if (CustomerRank[j][0] == 'S')
 					{
 						for (int i = 0; i < 15; i++)
 						{
 							pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
 						}
 					}
-					else if (CustomerRank[i][0] == 'G')
+					else if (CustomerRank[j][0] == 'G')
 					{
 						for (int i = 0; i < 15; i++)
 						{
@@ -146,16 +159,21 @@ void R4(string InputID)
 					cout << "************************************************************************************************" << endl;
 					for (int i = 12; i < 15; i++)
 					{
-						cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+						if (pointsBalance[j] > pointsRequired[i])
+						{
+							cout << "!" << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+						}
+						else
+							cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
 					}
-					if (CustomerRank[i][0] == 'S')
+					if (CustomerRank[j][0] == 'S')
 					{
 						for (int i = 0; i < 15; i++)
 						{
 							pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
 						}
 					}
-					else if (CustomerRank[i][0] == 'G')
+					else if (CustomerRank[j][0] == 'G')
 					{
 						for (int i = 0; i < 15; i++)
 						{
