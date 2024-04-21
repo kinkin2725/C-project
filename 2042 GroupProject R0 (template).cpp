@@ -58,7 +58,7 @@ int main()
 			case '5':R5(); break;
 			case '6':R6(); break;
 			default:
-				cout << "No such option " << option << endl;
+				cout << "Error...\n\n\n";
 				break;
 		}
 	}while(option != '6');
