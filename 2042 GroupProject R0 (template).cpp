@@ -56,12 +56,14 @@ int main()
 			case '3':R3(); break;
 			case '4':R4(); break;
 			case '5':R5(); break;
-			case '6':R6(); break;
+			case '6':break;
 			default:
 				cout << "Error...\n\n\n";
 				break;
 		}
 	}while(option != '6');
 
+	R6();
+	
 	return 0;
 }
