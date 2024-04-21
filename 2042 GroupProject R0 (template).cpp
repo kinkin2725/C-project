@@ -57,8 +57,11 @@ int main()
 			case '4':R4(); break;
 			case '5':R5(); break;
 			case '6':R6(); break;
+			default:
+				cout << "No such option " << option << endl;
+				break;
 		}
-	} while (option != '1' && option != '2' && option != '3' && option != '4' && option != '5' && option != '6');
+	}while(option != '6');
 
 	return 0;
 }
