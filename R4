@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <stdio.h>
 using namespace std;
 float money;
 int w = 30;
@@ -118,10 +119,11 @@ void R4(string InputID)
 										extra = Price[i] - amount;
 										cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
 										cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
-										cout << "Type 'yes' to confirm your purchase" << endl;
+										cout << "Type 'y' to confirm your purchase" << endl;
 										char confirm;
+										char confirmation = 'y';
 										cin >> confirm;
-										if (confirm == 'yes')
+										if (confirm == confirmation)
 										{
 											pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
 											cout << "Remaining CC points: " << pointsBalance[j] << endl;
@@ -195,10 +197,11 @@ void R4(string InputID)
 										extra = Price[i] - amount;
 										cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
 										cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
-										cout << "Type 'yes' to confirm your purchase" << endl;
+										cout << "Type 'y' to confirm your purchase" << endl;
 										char confirm;
+										char confirmation = 'y';
 										cin >> confirm;
-										if (confirm == 'yes')
+										if (confirm == confirmation)
 										{
 											pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
 											cout << "Remaining CC points: " << pointsBalance[j] << endl;
@@ -272,10 +275,11 @@ void R4(string InputID)
 										extra = Price[i] - amount;
 										cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
 										cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
-										cout << "Type 'yes' to confirm your purchase" << endl;
+										cout << "Type 'y' to confirm your purchase" << endl;
 										char confirm;
+										char confirmation = 'y';
 										cin >> confirm;
-										if (confirm == 'yes')
+										if (confirm == confirmation)
 										{
 											pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
 											cout << "Remaining CC points: " << pointsBalance[j] << endl;
@@ -349,10 +353,11 @@ void R4(string InputID)
 										extra = Price[i] - amount;
 										cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
 										cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
-										cout << "Type 'yes' to confirm your purchase" << endl;
+										cout << "Type 'y' to confirm your purchase" << endl;
 										char confirm;
+										char confirmation = 'y';
 										cin >> confirm;
-										if (confirm == 'yes')
+										if (confirm == confirmation)
 										{
 											pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
 											cout << "Remaining CC points: " << pointsBalance[j] << endl;
