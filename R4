@@ -28,7 +28,10 @@ void selectionSort(int list[], int listSize)
 		list[index] = temp;
 	}
 }
-
+void R0()
+{
+	cout << "temp";
+}
 void R4(string InputID)
 {
 
@@ -392,8 +395,16 @@ void R4(string InputID)
 					}
 					R4(InputID);
 				}
+			case 3:
+				cout << "current CC Points Balance: " << pointsBalance[j] << endl;
+				cout << "Input a new CC Points Balance value: ";
+				cin >> pointsBalance[j];
+				cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j] << endl;
+				R4(InputID);
+			case 4:
+				R0();
+				return;
 			}
-			return;
 		}
 	}
 		cout << "Customer ID Not Found, return to Main Menu";
