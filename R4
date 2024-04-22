@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include <stdio.h>
 using namespace std;
 float money;
 int w = 30;
@@ -14,9 +13,11 @@ int Price[15] = { 3900,2400,400,1500,480,1800,600,450,50,50,100,200,350,250,800 
 int pointsRequired[15] = { 19000,11500,2000,7300,2400,8800,2900,2250,250,250,500,960,1750,1250,3900 };
 int pointsBalance[10] = { 8500,22800,650,14000,2580,8000,33554,8650,28000,12340 };
 
-void selectionSort(int list[], int listSize)
+void selectionSort(int list[], int price[], char id[][4], char description[][100],int listSize)
 {
 	int smallestIndex, temp;
+	char tempId[4];
+	char tempdescription[100];
 	for (int index = 0; index < listSize - 1; index++)
 	{
 		smallestIndex = index;
@@ -26,6 +27,16 @@ void selectionSort(int list[], int listSize)
 		temp = list[smallestIndex];
 		list[smallestIndex] = list[index];
 		list[index] = temp;
+		temp = price[smallestIndex];
+		price[smallestIndex] = price[index];
+		price[index] = temp;
+		strcpy_s(tempId, id[smallestIndex]);
+		strcpy_s(id[smallestIndex], id[index]);
+		strcpy_s(id[index], tempId);
+		strcpy_s(tempdescription, description[smallestIndex]);
+		strcpy_s(description[smallestIndex], description[index]);
+		strcpy_s(description[index], tempdescription);
+		
 	}
 }
 void R0()
@@ -62,6 +73,7 @@ void R4(string InputID)
 				cout << "New Points Balance " << pointsBalance[j] << endl;
 				R4(InputID);
 			case 2:
+				selectionSort(pointsRequired, Price, giftID, giftDescription, 15);
 				if (CustomerRank[j][0] == 'S')
 				{
 					for (int i = 0; i < 15; i++)
@@ -402,7 +414,7 @@ void R4(string InputID)
 				cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j] << endl;
 				R4(InputID);
 			case 4:
-				R0();
+				R0(); // return to main menu
 				return;
 			}
 		}
