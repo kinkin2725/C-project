@@ -74,6 +74,7 @@ void R2()
 		cout << setw(17) << CustomerID[i] << setw(9) << CustomerRank[i] << pointsBalance[i] << endl;
 	}
 	cout << "\n\n";
+	cout << right;
 }
 
 int main()
