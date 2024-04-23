@@ -83,6 +83,7 @@ void R2()
 		cout << setw(17) << CustomerID[i] << setw(9) << CustomerRank[i] << pointsBalance[i] << endl;
 	}
 	cout << "\n\n";
+	cout << right;
 }
 
 void R3()
@@ -122,392 +123,396 @@ void R4(string InputID)
 	{
 		if (InputID == CustomerID[j])
 		{
-			string redeem;
-			int k = 0;
 			int option;
-			int amount;
-			char category;
-			cout << "Action for Customer ID: " << CustomerID[j] << endl;
-			cout << "***** Customer View Menu *****" << endl;
-			cout << "[1] Earn CC Points" << endl;
-			cout << "[2] Redeem Gifts" << endl;
-			cout << "[3] Modify CC Points Balance" << endl;
-			cout << "[4] Return to Main Menu" << endl;
-			cout << "**************************" << endl;
-			cout << "Option (1 - 4): ";
-			cin >> option;
-			switch (option)
+			do
 			{
-			case 1:
-				cout << "Input amount of money spent: ";
-				cin >> money;
-				pointsBalance[j] = money / 250 + pointsBalance[j];
-				cout << "New Points Balance " << pointsBalance[j] << endl;
-				R4(InputID);
-			case 2:
-				selectionSort(pointsRequired, Price, giftID, giftDescription, 15);
-				if (CustomerRank[j][0] == 'S')
+				string redeem;
+				int k = 0;
+				int amount;
+				char category;
+				cout << "Action for Customer ID: " << CustomerID[j] << endl;
+				cout << "***** Customer View Menu *****" << endl;
+				cout << "[1] Earn CC Points" << endl;
+				cout << "[2] Redeem Gifts" << endl;
+				cout << "[3] Modify CC Points Balance" << endl;
+				cout << "[4] Return to Main Menu" << endl;
+				cout << "**************************" << endl;
+				cout << "Option (1 - 4): ";
+				cin >> option;
+				switch (option)
 				{
-					for (int i = 0; i < 15; i++)
+				case 1:
+					cout << "Input amount of money spent: ";
+					cin >> money;
+					pointsBalance[j] = money / 250 + pointsBalance[j];
+					cout << "New Points Balance " << pointsBalance[j] << endl;
+					break;
+				case 2:
+					selectionSort(pointsRequired, Price, giftID, giftDescription, 15);
+					if (CustomerRank[j][0] == 'S')
 					{
-						pointsRequired[i] *= 0.95;
+						for (int i = 0; i < 15; i++)
+						{
+							pointsRequired[i] *= 0.95;
+						}
 					}
+					else if (CustomerRank[j][0] == 'G')
+					{
+						for (int i = 0; i < 15; i++)
+						{
+							pointsRequired[i] *= 0.90;
+						}
+					}
+					cout << "Input Gift Category (A to D) : ";
+					cin >> category;
+					cout << endl;
+					cout << "! represents You Have Enough CC points to redeem the gift" << endl;
+					switch (category)
+					{
+					case 'A':
+						cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
+						cout << "************************************************************************" << endl;
+						for (int i = 0; i < 15; i++)
+						{
+							if (giftID[i][0] == 'A')
+							{
+								cout << left;
+								if (pointsBalance[j] > pointsRequired[i])
+								{
+									cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+								}
+								else
+									cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+								cout << right;
+							}
+						}
+						while (k <= 2)
+						{
+							int temp = 0;
+							cout << "Enter GiftID of the gift that you want to redeem: ";
+							cin >> redeem;
+							for (int i = 0; i < 15; i++)
+							{
+								if (strncmp(redeem.c_str(), giftID[i], 3) == 0)
+								{
+									cout << "Amount of CC points you would like to use: ";
+									cin >> amount;
+									if (amount <= pointsBalance[j])
+									{
+										if (amount >= pointsRequired[i])
+										{
+											cout << "Extra money needed = $0" << endl;
+											cout << "(" << pointsRequired[i] << " CC points is required and to be deducted" << ")" << endl;
+											pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
+											cout << "Remaining CC points: " << pointsBalance[j] << endl;
+											k += 99;
+										}
+										else
+										{
+											amount *= 0.2;
+											int extra;
+											extra = Price[i] - amount;
+											cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
+											cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
+											cout << "Type 'y' to confirm your purchase" << endl;
+											char confirm;
+											char confirmation = 'y';
+											cin >> confirm;
+											if (confirm == confirmation)
+											{
+												pointsBalance[j] = pointsBalance[j] - amount;
+												cout << "Remaining CC points: " << pointsBalance[j] << endl;
+												k += 99;
+											}
+										}
+									}
+									else {
+										temp++;
+									}
+								}
+							}
+							if (temp != 0)
+							{
+								cout << "Error, Invalid Input" << endl;
+							}
+							k++;
+						}
+						if (CustomerRank[j][0] == 'S')
+						{
+							for (int i = 0; i < 15; i++)
+							{
+								pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
+							}
+						}
+						else if (CustomerRank[j][0] == 'G')
+						{
+							for (int i = 0; i < 15; i++)
+							{
+								pointsRequired[i] = pointsRequired[i] * (10.0 / 9.0);
+							}
+						}
+						break;
+					case 'B':
+						cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
+						cout << "************************************************************************" << endl;
+						for (int i = 0; i < 15; i++)
+						{
+							if (giftID[i][0] == 'B')
+							{
+								cout << left;
+								if (pointsBalance[j] > pointsRequired[i])
+								{
+									cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+								}
+								else
+									cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+								cout << right;
+							}
+						}
+						while (k <= 2)
+						{
+							int temp = 0;
+							cout << "Enter GiftID of the gift that you want to redeem: ";
+							cin >> redeem;
+							for (int i = 0; i < 15; i++)
+							{
+								if (strncmp(redeem.c_str(), giftID[i], 3) == 0)
+								{
+									cout << "Amount of CC points you would like to use: ";
+									cin >> amount;
+									if (amount <= pointsBalance[j])
+									{
+										if (amount >= pointsRequired[i])
+										{
+											cout << "Extra money needed = $0" << endl;
+											cout << "(" << pointsRequired[i] << " CC points is required and to be deducted" << ")" << endl;
+											pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
+											cout << "Remaining CC points: " << pointsBalance[j] << endl;
+											k += 99;
+										}
+										else
+										{
+											amount *= 0.2;
+											int extra;
+											extra = Price[i] - amount;
+											cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
+											cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
+											cout << "Type 'y' to confirm your purchase" << endl;
+											char confirm;
+											char confirmation = 'y';
+											cin >> confirm;
+											if (confirm == confirmation)
+											{
+												pointsBalance[j] = pointsBalance[j] - amount;
+												cout << "Remaining CC points: " << pointsBalance[j] << endl;
+												k += 99;
+											}
+										}
+									}
+									else {
+										temp++;
+									}
+								}
+							}
+							if (temp != 0)
+							{
+								cout << "Error, Invalid Input" << endl;
+							}
+							k++;
+						}
+						if (CustomerRank[j][0] == 'S')
+						{
+							for (int i = 0; i < 15; i++)
+							{
+								pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
+							}
+						}
+						else if (CustomerRank[j][0] == 'G')
+						{
+							for (int i = 0; i < 15; i++)
+							{
+								pointsRequired[i] = pointsRequired[i] * (10.0 / 9.0);
+							}
+						}
+						break;
+					case 'C':
+						cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
+						cout << "************************************************************************" << endl;
+						for (int i = 0; i < 15; i++)
+						{
+							if (giftID[i][0] == 'C')
+							{
+								cout << left;
+								if (pointsBalance[j] > pointsRequired[i])
+								{
+									cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+								}
+								else
+									cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+								cout << right;
+							}
+						}
+						while (k <= 2)
+						{
+							int temp = 0;
+							cout << "Enter GiftID of the gift that you want to redeem: ";
+							cin >> redeem;
+							for (int i = 0; i < 15; i++)
+							{
+								if (strncmp(redeem.c_str(), giftID[i], 3) == 0)
+								{
+									cout << "Amount of CC points you would like to use: ";
+									cin >> amount;
+									if (amount <= pointsBalance[j])
+									{
+										if (amount >= pointsRequired[i])
+										{
+											cout << "Extra money needed = $0" << endl;
+											cout << "(" << pointsRequired[i] << " CC points is required and to be deducted" << ")" << endl;
+											pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
+											cout << "Remaining CC points: " << pointsBalance[j] << endl;
+											k += 99;
+										}
+										else
+										{
+											amount *= 0.2;
+											int extra;
+											extra = Price[i] - amount;
+											cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
+											cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
+											cout << "Type 'y' to confirm your purchase" << endl;
+											char confirm;
+											char confirmation = 'y';
+											cin >> confirm;
+											if (confirm == confirmation)
+											{
+												pointsBalance[j] = pointsBalance[j] - amount;
+												cout << "Remaining CC points: " << pointsBalance[j] << endl;
+												k += 99;
+											}
+										}
+									}
+									else {
+										temp++;
+									}
+								}
+							}
+							if (temp != 0)
+							{
+								cout << "Error, Invalid Input" << endl;
+							}
+							k++;
+						}
+						if (CustomerRank[j][0] == 'S')
+						{
+							for (int i = 0; i < 15; i++)
+							{
+								pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
+							}
+						}
+						else if (CustomerRank[j][0] == 'G')
+						{
+							for (int i = 0; i < 15; i++)
+							{
+								pointsRequired[i] = pointsRequired[i] * (10.0 / 9.0);
+							}
+						}
+						break;
+					case 'D':
+						cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
+						cout << "************************************************************************" << endl;
+						for (int i = 0; i < 15; i++)
+						{
+							if (giftID[i][0] == 'D')
+							{
+								cout << left;
+								if (pointsBalance[j] > pointsRequired[i])
+								{
+									cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+								}
+								else
+									cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+								cout << right;
+							}
+						}
+						while (k <= 2)
+						{
+							int temp = 0;
+							cout << "Enter GiftID of the gift that you want to redeem: ";
+							cin >> redeem;
+							for (int i = 0; i < 15; i++)
+							{
+								if (strncmp(redeem.c_str(), giftID[i], 3) == 0)
+								{
+									cout << "Amount of CC points you would like to use: ";
+									cin >> amount;
+									if (amount <= pointsBalance[j])
+									{
+										if (amount >= pointsRequired[i])
+										{
+											cout << "Extra money needed = $0" << endl;
+											cout << "(" << pointsRequired[i] << " CC points is required and to be deducted" << ")" << endl;
+											pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
+											cout << "Remaining CC points: " << pointsBalance[j] << endl;
+											k += 99;
+										}
+										else
+										{
+											amount *= 0.2;
+											int extra;
+											extra = Price[i] - amount;
+											cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
+											cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
+											cout << "Type 'y' to confirm your purchase" << endl;
+											char confirm;
+											char confirmation = 'y';
+											cin >> confirm;
+											if (confirm == confirmation)
+											{
+												pointsBalance[j] = pointsBalance[j] - amount;
+												cout << "Remaining CC points: " << pointsBalance[j] << endl;
+												k += 99;
+											}
+										}
+									}
+									else {
+										temp++;
+									}
+								}
+							}
+							if (temp != 0)
+							{
+								cout << "Error, Invalid Input" << endl;
+							}
+							k++;
+						}
+						if (CustomerRank[j][0] == 'S')
+						{
+							for (int i = 0; i < 15; i++)
+							{
+								pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
+							}
+						}
+						else if (CustomerRank[j][0] == 'G')
+						{
+							for (int i = 0; i < 15; i++)
+							{
+								pointsRequired[i] = pointsRequired[i] * (10.0 / 9.0);
+							}
+						}
+						break;
+					}
+				case 3:
+					cout << "current CC Points Balance: " << pointsBalance[j] << endl;
+					cout << "Input a new CC Points Balance value: ";
+					cin >> pointsBalance[j];
+					cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j] << endl;
+					break;
+				case 4:
+					break;
 				}
-				else if (CustomerRank[j][0] == 'G')
-				{
-					for (int i = 0; i < 15; i++)
-					{
-						pointsRequired[i] *= 0.90;
-					}
-				}
-				cout << "Input Gift Category (A to D) : ";
-				cin >> category;
-				cout << endl;
-				cout << "! represents You Have Enough CC points to redeem the gift" << endl;
-				switch (category)
-				{
-				case 'A':
-					cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
-					cout << "************************************************************************" << endl;
-					for (int i = 0; i < 15; i++)
-					{
-						if (giftID[i][0] == 'A')
-						{
-							cout << left;
-							if (pointsBalance[j] > pointsRequired[i])
-							{
-								cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
-							}
-							else
-								cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
-							cout << right;
-						}
-					}
-					while (k <= 2)
-					{
-						int temp = 0;
-						cout << "Enter GiftID of the gift that you want to redeem: ";
-						cin >> redeem;
-						for (int i = 0; i < 15; i++)
-						{
-							if (strncmp(redeem.c_str(), giftID[i], 3) == 0)
-							{
-								cout << "Amount of CC points you would like to use: ";
-								cin >> amount;
-								if (amount <= pointsBalance[j])
-								{
-									if (amount >= pointsRequired[i])
-									{
-										cout << "Extra money needed = $0" << endl;
-										cout << "(" << pointsRequired[i] << " CC points is required and to be deducted" << ")" << endl;
-										pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
-										cout << "Remaining CC points: " << pointsBalance[j] << endl;
-										k += 99;
-									}
-									else
-									{
-										amount *= 0.2;
-										int extra;
-										extra = Price[i] - amount;
-										cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
-										cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
-										cout << "Type 'y' to confirm your purchase" << endl;
-										char confirm;
-										char confirmation = 'y';
-										cin >> confirm;
-										if (confirm == confirmation)
-										{
-											pointsBalance[j] = pointsBalance[j] - amount;
-											cout << "Remaining CC points: " << pointsBalance[j] << endl;
-											k += 99;
-										}
-									}
-								}
-								else {
-									temp++;
-								}
-							}
-						}
-						if (temp != 0)
-						{
-							cout << "Error, Invalid Input" << endl;
-						}
-						k++;
-					}
-					if (CustomerRank[j][0] == 'S')
-					{
-						for (int i = 0; i < 15; i++)
-						{
-							pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
-						}
-					}
-					else if (CustomerRank[j][0] == 'G')
-					{
-						for (int i = 0; i < 15; i++)
-						{
-							pointsRequired[i] = pointsRequired[i] * (10.0 / 9.0);
-						}
-					}
-					R4(InputID);
-				case 'B':
-					cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
-					cout << "************************************************************************" << endl;
-					for (int i = 0; i < 15; i++)
-					{
-						if (giftID[i][0] == 'B')
-						{
-							cout << left;
-							if (pointsBalance[j] > pointsRequired[i])
-							{
-								cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
-							}
-							else
-								cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
-							cout << right;
-						}
-					}
-					while (k <= 2)
-					{
-						int temp = 0;
-						cout << "Enter GiftID of the gift that you want to redeem: ";
-						cin >> redeem;
-						for (int i = 0; i < 15; i++)
-						{
-							if (strncmp(redeem.c_str(), giftID[i], 3) == 0)
-							{
-								cout << "Amount of CC points you would like to use: ";
-								cin >> amount;
-								if (amount <= pointsBalance[j])
-								{
-									if (amount >= pointsRequired[i])
-									{
-										cout << "Extra money needed = $0" << endl;
-										cout << "(" << pointsRequired[i] << " CC points is required and to be deducted" << ")" << endl;
-										pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
-										cout << "Remaining CC points: " << pointsBalance[j] << endl;
-										k += 99;
-									}
-									else
-									{
-										amount *= 0.2;
-										int extra;
-										extra = Price[i] - amount;
-										cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
-										cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
-										cout << "Type 'y' to confirm your purchase" << endl;
-										char confirm;
-										char confirmation = 'y';
-										cin >> confirm;
-										if (confirm == confirmation)
-										{
-											pointsBalance[j] = pointsBalance[j] - amount;
-											cout << "Remaining CC points: " << pointsBalance[j] << endl;
-											k += 99;
-										}
-									}
-								}
-								else {
-									temp++;
-								}
-							}
-						}
-						if (temp != 0)
-						{
-							cout << "Error, Invalid Input" << endl;
-						}
-						k++;
-					}
-					if (CustomerRank[j][0] == 'S')
-					{
-						for (int i = 0; i < 15; i++)
-						{
-							pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
-						}
-					}
-					else if (CustomerRank[j][0] == 'G')
-					{
-						for (int i = 0; i < 15; i++)
-						{
-							pointsRequired[i] = pointsRequired[i] * (10.0 / 9.0);
-						}
-					}
-					R4(InputID);
-				case 'C':
-					cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
-					cout << "************************************************************************" << endl;
-					for (int i = 0; i < 15; i++)
-					{
-						if (giftID[i][0] == 'C')
-						{
-							cout << left;
-							if (pointsBalance[j] > pointsRequired[i])
-							{
-								cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
-							}
-							else
-								cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
-							cout << right;
-						}
-					}
-					while (k <= 2)
-					{
-						int temp = 0;
-						cout << "Enter GiftID of the gift that you want to redeem: ";
-						cin >> redeem;
-						for (int i = 0; i < 15; i++)
-						{
-							if (strncmp(redeem.c_str(), giftID[i], 3) == 0)
-							{
-								cout << "Amount of CC points you would like to use: ";
-								cin >> amount;
-								if (amount <= pointsBalance[j])
-								{
-									if (amount >= pointsRequired[i])
-									{
-										cout << "Extra money needed = $0" << endl;
-										cout << "(" << pointsRequired[i] << " CC points is required and to be deducted" << ")" << endl;
-										pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
-										cout << "Remaining CC points: " << pointsBalance[j] << endl;
-										k += 99;
-									}
-									else
-									{
-										amount *= 0.2;
-										int extra;
-										extra = Price[i] - amount;
-										cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
-										cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
-										cout << "Type 'y' to confirm your purchase" << endl;
-										char confirm;
-										char confirmation = 'y';
-										cin >> confirm;
-										if (confirm == confirmation)
-										{
-											pointsBalance[j] = pointsBalance[j] - amount;
-											cout << "Remaining CC points: " << pointsBalance[j] << endl;
-											k += 99;
-										}
-									}
-								}
-								else {
-									temp++;
-								}
-							}
-						}
-						if (temp != 0)
-						{
-							cout << "Error, Invalid Input" << endl;
-						}
-						k++;
-					}
-					if (CustomerRank[j][0] == 'S')
-					{
-						for (int i = 0; i < 15; i++)
-						{
-							pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
-						}
-					}
-					else if (CustomerRank[j][0] == 'G')
-					{
-						for (int i = 0; i < 15; i++)
-						{
-							pointsRequired[i] = pointsRequired[i] * (10.0 / 9.0);
-						}
-					}
-					R4(InputID);
-				case 'D':
-					cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
-					cout << "************************************************************************" << endl;
-					for (int i = 0; i < 15; i++)
-					{
-						if (giftID[i][0] == 'D')
-						{
-							cout << left;
-							if (pointsBalance[j] > pointsRequired[i])
-							{
-								cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
-							}
-							else
-								cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
-							cout << right;
-						}
-					}
-					while (k <= 2)
-					{
-						int temp = 0;
-						cout << "Enter GiftID of the gift that you want to redeem: ";
-						cin >> redeem;
-						for (int i = 0; i < 15; i++)
-						{
-							if (strncmp(redeem.c_str(), giftID[i], 3) == 0)
-							{
-								cout << "Amount of CC points you would like to use: ";
-								cin >> amount;
-								if (amount <= pointsBalance[j])
-								{
-									if (amount >= pointsRequired[i])
-									{
-										cout << "Extra money needed = $0" << endl;
-										cout << "(" << pointsRequired[i] << " CC points is required and to be deducted" << ")" << endl;
-										pointsBalance[j] = pointsBalance[j] - pointsRequired[i];
-										cout << "Remaining CC points: " << pointsBalance[j] << endl;
-										k += 99;
-									}
-									else
-									{
-										amount *= 0.2;
-										int extra;
-										extra = Price[i] - amount;
-										cout << "Extra money needed = $ " << Price[i] << "- " << amount << "= $" << extra << endl;
-										cout << "(" << pointsRequired[i] << " CC points is required" << ")" << endl;
-										cout << "Type 'y' to confirm your purchase" << endl;
-										char confirm;
-										char confirmation = 'y';
-										cin >> confirm;
-										if (confirm == confirmation)
-										{
-											pointsBalance[j] = pointsBalance[j] - amount;
-											cout << "Remaining CC points: " << pointsBalance[j] << endl;
-											k += 99;
-										}
-									}
-								}
-								else {
-									temp++;
-								}
-							}
-						}
-						if (temp != 0)
-						{
-							cout << "Error, Invalid Input" << endl;
-						}
-						k++;
-					}
-					if (CustomerRank[j][0] == 'S')
-					{
-						for (int i = 0; i < 15; i++)
-						{
-							pointsRequired[i] = pointsRequired[i] * (100.0 / 95.0);
-						}
-					}
-					else if (CustomerRank[j][0] == 'G')
-					{
-						for (int i = 0; i < 15; i++)
-						{
-							pointsRequired[i] = pointsRequired[i] * (10.0 / 9.0);
-						}
-					}
-					R4(InputID);
-				}
-			case 3:
-				cout << "current CC Points Balance: " << pointsBalance[j] << endl;
-				cout << "Input a new CC Points Balance value: ";
-				cin >> pointsBalance[j];
-				cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j] << endl;
-				R4(InputID);
-			case 4:
-				break;
-			}
+			}while (option != 4);
+			
 		}
 	}
 	cout << "\nCustomer ID Not Found, return to Main Menu\n\n";
@@ -562,7 +567,8 @@ int main()
 {
 	char option;
 	bool R1run = false;
-	do
+	bool yn = true;
+	while(yn)
 	{
 		cout << "Welcome! This is Gift Redemption System\n";
 		cout << "*** Main Menu ***\n";
@@ -599,9 +605,7 @@ int main()
 		{
 			cout << "Error...\n\n\n";
 		}
-	} while (option != '7');
-
-	R6();
+	}
 
 	return 0;
 }
