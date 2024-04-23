@@ -1,3 +1,0 @@
-Idk why R1 doesn't work in visual studio and replit, but it works in cpp.sh
-ofc i used strcpy in cpp.sh and replit, strcpy_s in vs,
-all r0,r1,r2 works in cpp.sh
