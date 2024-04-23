@@ -4,7 +4,7 @@
 using namespace std;
 
 float money;
-int w = 30;
+int w = 20;
 char giftID[15][4];
 char giftDescription[15][100];
 int Price[15];
@@ -167,18 +167,20 @@ void R4(string InputID)
 				switch (category)
 				{
 				case 'A':
-					cout << "Gift ID" << setw(w) << "Gift Description" << setw(w) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
-					cout << "************************************************************************************************" << endl;
+					cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
+					cout << "************************************************************************" << endl;
 					for (int i = 0; i < 15; i++)
 					{
 						if (giftID[i][0] == 'A')
 						{
+							cout << left;
 							if (pointsBalance[j] > pointsRequired[i])
 							{
-								cout << "!" << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+								cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
 							}
 							else
-								cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+								cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+							cout << right;
 						}
 					}
 					while (k <= 2)
@@ -248,18 +250,20 @@ void R4(string InputID)
 					}
 					R4(InputID);
 				case 'B':
-					cout << "Gift ID" << setw(w) << "Gift Description" << setw(w) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
-					cout << "************************************************************************************************" << endl;
+					cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
+					cout << "************************************************************************" << endl;
 					for (int i = 0; i < 15; i++)
 					{
 						if (giftID[i][0] == 'B')
 						{
+							cout << left;
 							if (pointsBalance[j] > pointsRequired[i])
 							{
-								cout << "!" << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+								cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
 							}
 							else
-								cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+								cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+							cout << right;
 						}
 					}
 					while (k <= 2)
@@ -329,18 +333,20 @@ void R4(string InputID)
 					}
 					R4(InputID);
 				case 'C':
-					cout << "Gift ID" << setw(w) << "Gift Description" << setw(w) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
-					cout << "************************************************************************************************" << endl;
+					cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
+					cout << "************************************************************************" << endl;
 					for (int i = 0; i < 15; i++)
 					{
 						if (giftID[i][0] == 'C')
 						{
+							cout << left;
 							if (pointsBalance[j] > pointsRequired[i])
 							{
-								cout << "!" << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+								cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
 							}
 							else
-								cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+								cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+							cout << right;
 						}
 					}
 					while (k <= 2)
@@ -410,18 +416,20 @@ void R4(string InputID)
 					}
 					R4(InputID);
 				case 'D':
-					cout << "Gift ID" << setw(w) << "Gift Description" << setw(w) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
-					cout << "************************************************************************************************" << endl;
+					cout << "Gift ID" << setw(w) << "Gift Description" << setw(25) << "Price(HKD)" << setw(w) << "Points Requried" << endl;
+					cout << "************************************************************************" << endl;
 					for (int i = 0; i < 15; i++)
 					{
 						if (giftID[i][0] == 'D')
 						{
+							cout << left;
 							if (pointsBalance[j] > pointsRequired[i])
 							{
-								cout << "!" << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+								cout << "!" << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
 							}
 							else
-								cout << giftID[i] << setw(w) << giftDescription[i] << setw(w) << Price[i] << setw(w) << pointsRequired[i] << endl;
+								cout << " " << setw(10) << giftID[i] << setw(31) << giftDescription[i] << setw(15) << Price[i] << pointsRequired[i] << endl;
+							cout << right;
 						}
 					}
 					while (k <= 2)
@@ -498,11 +506,11 @@ void R4(string InputID)
 				cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j] << endl;
 				R4(InputID);
 			case 4:
-				return;
+				break;
 			}
 		}
 	}
-	cout << "Customer ID Not Found, return to Main Menu";
+	cout << "\nCustomer ID Not Found, return to Main Menu\n\n";
 }
 
 void Rfour()
@@ -523,23 +531,24 @@ void R6()
 	char input;
 
 	do {
-		cout << "Do you want to see the credits? (y/n) "; // ask user to enter yes or no
+		cout << "Do you want to see the credits? (y/n) : "; // ask user to enter yes or no
 		cin >> input;
-
+		cout << "\n";
 		{
 			if (input == 'y' || input == 'Y') {
-				cout << setw(10) << "Name\t" << "Student ID\t" << "Tutorial group" << endl; // show the credit (information of student)
-				cout << "Lui Hin Wang\t" << "23127370A\t" << setw(8) << "B03D" << endl; // student 1
+				cout << setw(10) << "Name\t" << "Student ID\t" << "Tutorial group\t" << endl; // show the credit (information of student)
+				cout << "-------------------------------------------------\n";
+				cout << "Lui Hin Wang\t"<< "23127370A\t" << setw(8) << "B03D" << endl; // student 1
 				cout << "So Yu Hin\t" << "23181767A\t" << setw(8) << "B03B" << endl; // student 2
 				cout << "Tan Konh Kin\t" << "23146901A\t" << setw(8) << "B03A" << endl; // student 3
 				cout << "Wan Ka Ho\t" << "23069061A\t" << setw(8) << "B03B" << endl; // student 4
 				cout << "Wong Tsz Fung\t" << "23119333A\t" << setw(8) << "B03B" << endl; // student 5
-				return;
+				exit(0);
 			}
 
 			// if user enter no, go back to main menu
 			else if (input == 'n' || input == 'N') {
-				cout << "Return to main menu" << endl;
+				cout << "Return to main menu\n" << endl;
 				return;
 			}
 			else {
@@ -555,7 +564,7 @@ int main()
 	bool R1run = false;
 	do
 	{
-		cout << "Welcome Message designed by your group\n";
+		cout << "Welcome! This is Gift Redemption System\n";
 		cout << "*** Main Menu ***\n";
 		cout << "[1] Load Starting Data\n";
 		cout << "[2] Show Records\n";
