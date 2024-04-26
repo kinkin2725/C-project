@@ -96,7 +96,7 @@ void selectionSort(int list[], int price[], char id[][4], char description[][100
 	int smallestIndex, temp;
 	char tempId[4];
 	char tempdescription[100];
-	for (int index = 0; index < listSize - 1; index++)
+	for (int index = 0; index < listSize - 1; index++)	//sort the data by price in acsending order
 	{
 		smallestIndex = index;
 		for (int pos = index + 1; pos < listSize; pos++)
@@ -121,7 +121,7 @@ void R4(string InputID)
 {
 	for (int j = 0; j < 10; j++)
 	{
-		if (InputID == CustomerID[j])
+		if (InputID == CustomerID[j])	//if CustomerID is correct,Enter Customer View
 		{
 			int option;
 			do
@@ -131,23 +131,23 @@ void R4(string InputID)
 				int amount;
 				char category;
 				cout << "Action for Customer ID: " << CustomerID[j] << endl;
-				cout << "***** Customer View Menu *****" << endl;
-				cout << "[1] Earn CC Points" << endl;
+				cout << "***** Customer View Menu *****" << endl;		//switch 1-4
+				cout << "[1] Earn CC Points" << endl; 
 				cout << "[2] Redeem Gifts" << endl;
 				cout << "[3] Modify CC Points Balance" << endl;
 				cout << "[4] Return to Main Menu" << endl;
 				cout << "**************************" << endl;
 				cout << "Option (1 - 4): ";
-				cin >> option;
+				cin >> option;	//input option
 				switch (option)
 				{
-				case 1:
+				case 1:	//Earn CC Points
 					cout << "Input amount of money spent: ";
 					cin >> money;
 					pointsBalance[j] = money / 250 + pointsBalance[j];
 					cout << "New Points Balance " << pointsBalance[j] << endl;
 					break;
-				case 2:
+				case 2:	//Redeem Gifts
 					selectionSort(pointsRequired, Price, giftID, giftDescription, 15);
 					if (CustomerRank[j][0] == 'S')
 					{
@@ -521,9 +521,9 @@ void R4(string InputID)
 void Rfour()
 {
 	string ID;
-	cout << "Input your customer ID: ";
-	cin >> ID;
-	R4(ID);
+	cout << "Input your customer ID: "; 
+	cin >> ID; //input customerID
+	R4(ID); //call function R4
 }
 
 void R5()
