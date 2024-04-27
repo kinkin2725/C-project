@@ -505,8 +505,19 @@ void R4(string InputID)
 				case 3:
 					cout << "current CC Points Balance: " << pointsBalance[j] << endl;
 					cout << "Input a new CC Points Balance value: ";
+					int tempo;
+					tempo = pointsBalance[j];
 					cin >> pointsBalance[j];
-					cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j] << endl;
+					if (pointsBalance[j] >= 0)
+					{
+						cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j] << endl;
+					}
+					else
+					{
+						pointsBalance[j] = tempo;
+						cout << "Invalid input , the CC Points value should be positive." << endl;
+						cout << "return to customer view" << endl;
+					}
 					break;
 				case 4:
 					break;
