@@ -3,7 +3,7 @@
 #include <iomanip>
 using namespace std;
 
-float money;
+float money; // the global variables of the data
 int w = 20;
 char giftID[15][4];
 char giftDescription[15][100];
@@ -15,7 +15,7 @@ int pointsBalance[20];
 
 void R1()
 {
-	const char* id[15] = { "A01","A02","A03","B01","B02","B03","B04","B05","C01","C02","C03","C04","D01","D02","D03" };
+	const char* id[15] = { "A01","A02","A03","B01","B02","B03","B04","B05","C01","C02","C03","C04","D01","D02","D03" }; //these are the variables to store data
 	const char* desciption[15] = { "LG Internet TV","Pionner Hifi Set","Sony DVD Player","Healthy Air Fryer","Tefal Microwave Oven","Famous Coffee Maker","Smart Rice Cooker",
 	"TechCook Toaster Oven","Wellcome $50 Coupon","Mannings $50 Coupon","Carol Restaurant $100 Coupon","Shell $200 Coupon","Clever Headset","HP Optic Mouse","Stylish Bluetooth Speaker" };
 	const int P[15] = { 3900,2400,400,1500,480,1800,600,450,50,50,100,200,350,250,800 };
@@ -25,7 +25,7 @@ void R1()
 	int Balance[20] = { 8500,22800,650,14000,2580,8000,33554,8650,28000,12340 };
 	for (int i = 0; i < 15; i++)
 	{
-		strcpy_s(giftID[i], id[i]);
+		strcpy_s(giftID[i], id[i]); //copy the data to global variables
 		strcpy_s(giftDescription[i], desciption[i]);
 		Price[i] = P[i];
 		pointsRequired[i] = points[i];
@@ -36,7 +36,7 @@ void R1()
 	cout << "Starting Data Loaded\n\n\n";
 }
 
-void sortstr(char ID[][20],char rank[][20],int points[], int size)
+void sortstr(char ID[][20], char rank[][20], int points[], int size)
 {
 	for (int i = 0; i < size - 1; i++)
 	{
@@ -47,7 +47,7 @@ void sortstr(char ID[][20],char rank[][20],int points[], int size)
 				char temp[20];
 				int temps[10];
 				{
-					strcpy_s(temp, ID[j]);
+					strcpy_s(temp, ID[j]);  //the function to sort alphabetically
 					strcpy_s(ID[j], ID[j + 1]);
 					strcpy_s(ID[j + 1], temp);
 					strcpy_s(temp, rank[j]);
@@ -64,7 +64,7 @@ void sortstr(char ID[][20],char rank[][20],int points[], int size)
 
 void R2()
 {
-	cout << "Gift ID" << setw(20) << "Gift Description" << setw(24);
+	cout << "Gift ID" << setw(20) << "Gift Description" << setw(24);	//to show the data of giftID
 	cout << "Price(HKD)" << setw(20) << "Points Required\n";
 	cout << "----------------------------------------------------------------------\n";
 	cout << left;
@@ -74,8 +74,8 @@ void R2()
 	}
 	cout << right;
 	cout << "\n\n";
-	sortstr(CustomerID, CustomerRank, pointsBalance, 10);
-	cout << "Customer ID" << setw(10) << "Rank" << setw(20) << "Points Balance\n";
+	sortstr(CustomerID, CustomerRank, pointsBalance, 10); //sort the customer ID alphabetically 
+	cout << "Customer ID" << setw(10) << "Rank" << setw(20) << "Points Balance\n"; //to show to the data of Customer ID
 	cout << "----------------------------------------\n";
 	cout << left;
 	for (int i = 0; i < 10; i++)
@@ -132,7 +132,7 @@ void R4(string InputID)
 				char category;
 				cout << "Action for Customer ID: " << CustomerID[j] << endl;
 				cout << "***** Customer View Menu *****" << endl;		//switch 1-4
-				cout << "[1] Earn CC Points" << endl; 
+				cout << "[1] Earn CC Points" << endl;
 				cout << "[2] Redeem Gifts" << endl;
 				cout << "[3] Modify CC Points Balance" << endl;
 				cout << "[4] Return to Main Menu" << endl;
@@ -511,8 +511,8 @@ void R4(string InputID)
 				case 4:
 					break;
 				}
-			}while (option != 4);
-			
+			} while (option != 4);
+
 		}
 	}
 	cout << "\nCustomer ID Not Found, return to Main Menu\n\n";
@@ -521,7 +521,7 @@ void R4(string InputID)
 void Rfour()
 {
 	string ID;
-	cout << "Input your customer ID: "; 
+	cout << "Input your customer ID: ";
 	cin >> ID; //input customerID
 	R4(ID); //call function R4
 }
@@ -543,7 +543,7 @@ void R6()
 			if (input == 'y' || input == 'Y') {
 				cout << setw(10) << "Name\t" << "Student ID\t" << "Tutorial group\t" << endl; // show the credit (information of student)
 				cout << "-------------------------------------------------\n";
-				cout << "Lui Hin Wang\t"<< "23127370A\t" << setw(8) << "B03D" << endl; // student 1
+				cout << "Lui Hin Wang\t" << "23127370A\t" << setw(8) << "B03D" << endl; // student 1
 				cout << "So Yu Hin\t" << "23181767A\t" << setw(8) << "B03B" << endl; // student 2
 				cout << "Tan Konh Kin\t" << "23146901A\t" << setw(8) << "B03A" << endl; // student 3
 				cout << "Wan Ka Ho\t" << "23069061A\t" << setw(8) << "B03B" << endl; // student 4
@@ -568,7 +568,7 @@ int main()
 	char option;
 	bool R1run = false;
 	bool yn = true;
-	while(yn)
+	while (yn)
 	{
 		cout << "Welcome! This is Gift Redemption System\n";
 		cout << "*** Main Menu ***\n";
