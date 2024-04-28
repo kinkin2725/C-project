@@ -642,8 +642,6 @@ void R4(string InputID) {
                         cout << "Invalid input , the CC Points value should be positive." << endl;
                         cout << "return to customer view" << endl;
                     }
-                    cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j]
-                        << endl;
                     R5ModifyCCPoints2(j, ModifyTemp[j], pointsBalance[j]);
                     ModifyTemp[j]++;
                     break;
