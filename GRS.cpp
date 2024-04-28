@@ -629,9 +629,9 @@ void R4(string InputID) {
                     R5ModifyCCPoints1(j, ModifyTemp[j], pointsBalance[j]);
                     cout << "current CC Points Balance: " << pointsBalance[j] << endl;
                     cout << "Input a new CC Points Balance value: ";
-                    cin >> pointsBalance[j];
                     int tempo; //variable that stores the old CCpoints of customer
                     tempo = pointsBalance[j];
+                    cin >> pointsBalance[j];
                     if (pointsBalance[j] >= 0) //check whether the input is valid
                     { // case: valid input
                         cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j] << endl;
