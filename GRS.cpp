@@ -1,8 +1,8 @@
 #include <cstring>
 #include <iomanip>
 #include <iostream>
+#include <ctime>
 using namespace std;
-
 float money;
 int w = 20;
 char giftID[15][4];
@@ -123,10 +123,19 @@ void R2() {
     cout << right;
 }
 
-void R3() {
-    // insert your code here
+void deleteCustomer(char a[20][20], char b[20][20], int c[20], int d)
+{
+    for (int i = d - 1; i < 10; i++)
+    {
+        strcpy_s(a[i], a[i + 1]);
+        strcpy_s(b[i], b[i + 1]);
+        c[i] = c[i + 1];
+    }
 }
 
+void R3()
+{
+}
 void selectionSort(int list[], int price[], char id[][4], char description[][100], int listSize) { // used to sort the order by the required Points in ascending order 
     int smallestIndex, temp;
     char tempId[4];
@@ -202,7 +211,7 @@ void R4(string InputID) {
                         R5RecordSummary1(j, pointsBalance[j]);
                     }
                     cout << "\nInput amount of money spent: ";
-                    cin >> money; 
+                    cin >> money;
                     R5EarningCCPoints1(j, EarningTemp[j], money);
                     pointsBalance[j] = money / 250 + pointsBalance[j]; // transfer money spent into CCpoints 
                     R5EarningCCPoints2(j, EarningTemp[j]);
@@ -239,7 +248,7 @@ void R4(string InputID) {
                                 if (pointsBalance[j] > pointsRequired[i]) { //check if customer have enough CCpoints to redeem the gifts without paying extra money
                                     cout << "!" << setw(10) << giftID[i] << setw(31) //! represents customer have enough CCpoints to redeem gifts directly
                                         << giftDescription[i] << setw(15) << Price[i]
-                                        << pointsRequired[i] << endl; 
+                                        << pointsRequired[i] << endl;
                                 }
                                 else
                                     cout << " " << setw(10) << giftID[i] << setw(31)
@@ -256,7 +265,7 @@ void R4(string InputID) {
                                 if (strncmp(redeem.c_str(), giftID[i], 3) == 0) { //compare "redeem" and "giftID" , check if they are equal
                                     cout << "Amount of CC points you would like to use: ";
                                     cin >> amount;
-                                    if (amount <= pointsBalance[j]) {  
+                                    if (amount <= pointsBalance[j]) {
                                         if (amount >= pointsRequired[i]) {
                                             if (!IsRecord[j]) {
                                                 IsRecord[j] = true;
@@ -298,7 +307,7 @@ void R4(string InputID) {
                                                 R5RedeemGifts3(j, RedeemGiftsTemp[j], amount);
                                                 RedeemGiftsTemp[j]++;
                                                 pointsBalance[j] = pointsBalance[j] - amount;
-                                                cout << "Remaining CC points: " << pointsBalance[j] 
+                                                cout << "Remaining CC points: " << pointsBalance[j]
                                                     << endl;
                                                 k += 99; //exit from loop
                                             }
@@ -637,7 +646,7 @@ void R4(string InputID) {
                     }
                     else // case: invalid input
                     {
-                        pointsBalance[j] = tempo; 
+                        pointsBalance[j] = tempo;
                         cout << "Invalid input , the CC Points value should be positive." << endl;
                         cout << "return to customer view" << endl;
                     }
@@ -833,41 +842,53 @@ void R5() {
     cout << "\nReturning to Main Menu\n\n";
 }
 
-class R6 {
-private: 
-    void displayCredits() {
-        cout << setw(10) << "Name\t" << "Student ID\t" << "Tutorial group" << endl; // show the credit (information of student)
-        cout << "Lui Hin Wang\t" << "23127370A\t" << setw(8) << "B03D" << endl; // student 1
-        cout << "So Yu Hin\t" << "23181767A\t" << setw(8) << "B03B" << endl; // student 2
-        cout << "Tan Long Kin\t" << "23146901A\t" << setw(8) << "B03A" << endl; // student 3
-        cout << "Wan Ka Ho\t" << "23069061A\t" << setw(8) << "B03B" << endl; // student 4
-        cout << "Wong Tsz Fung\t" << "23119333A\t" << setw(8) << "B03B" << endl; // student 5
+class Credit {
+private:
+    string student1() {
+        return "Lui Hin Wang\t23127370A\tB03D\n"; // student 1
+    }
+    string student2() {
+        return "So Yu Hin\t23181767A\tB03B\n"; // student 2
+    }
+    string student3() {
+        return "Tan Long Kin\t23146901A\tB03A\n"; // student 3
+    }
+    string student4() {
+        return "Wan Ka Ho\t23069061A\tB03B\n"; // student 4
+    }
+    string student5() {
+        return "Wong Tsz Fung\t23119333A\tB03B\n"; // student 5
     }
 
 public:
-    void Rsix() {
-        char input;
-
-        do {
-            cout << "Do you want to see the credits? (y/n) ";
-            cin >> input;
-            // when user enter "yes" 
-            if (input == 'y' || input == 'Y') {
-                displayCredits();
-                exit(0); // terminate the program
-            }
-            // when user enter "no"
-            // if user enter no, go back to main menu
-            else if (input == 'n' || input == 'N') {
-                cout << "Return to the main menu" << endl;
-                return; // return to main menu
-            }
-            else {
-                cout << "Invalid input, please try again" << endl; // tell user to enter again
-            }
-        } while (input != 'Y' && input != 'y' && input != 'N' && input != 'n'); // keep ask user to enter yes or no if user enter other character
+    void displayCredits() {
+        cout << setw(10) << "Name\t" << "Student ID\t" << "Tutorial group" << endl; // show the credit (information of student)
+        cout << student1() << student2() << student3() << student4() << student5() << endl;
     }
 };
+
+void R6() {
+    char input;
+    Credit credit; // Create an instance of the Credit class
+    do {
+        cout << "Do you want to see the credits? (y/n) ";
+        cin >> input;
+        // when user enter "yes" 
+        if (input == 'y' || input == 'Y') {
+            credit.displayCredits();
+            exit(0); // terminate the program
+        }
+        // when user enter "no"
+        // if user enter no, go back to main menu
+        else if (input == 'n' || input == 'N') {
+            cout << "Return to the main menu" << endl;
+            return; // return to main menu
+        }
+        else {
+            cout << "Invalid input, please try again" << endl; // tell user to enter again
+        }
+    } while (input != 'Y' && input != 'y' && input != 'N' && input != 'n'); // keep ask user to enter yes or no if user enter other character
+}
 
 
 int main() {
@@ -908,8 +929,7 @@ int main() {
                 R5();
                 break;
             case '6':
-                R6 viewer;
-                viewer.Rsix();
+                R6();
                 break;
             default:
                 cout << "Error...\n\n\n";
