@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <iostream>
 #include <ctime>
+#include <string>
 using namespace std;
 float money;
 int w = 20;
@@ -122,19 +123,9 @@ void R2() {
     cout << "\n\n";
     cout << right;
 }
-
-void deleteCustomer(char a[20][20], char b[20][20], int c[20], int d)
-{
-    for (int i = d - 1; i < 10; i++)
-    {
-        strcpy_s(a[i], a[i + 1]);
-        strcpy_s(b[i], b[i + 1]);
-        c[i] = c[i + 1];
-    }
-}
-
 void R3()
 {
+
 }
 void selectionSort(int list[], int price[], char id[][4], char description[][100], int listSize) { // used to sort the order by the required Points in ascending order 
     int smallestIndex, temp;
@@ -638,6 +629,7 @@ void R4(string InputID) {
                     R5ModifyCCPoints1(j, ModifyTemp[j], pointsBalance[j]);
                     cout << "current CC Points Balance: " << pointsBalance[j] << endl;
                     cout << "Input a new CC Points Balance value: ";
+                    cin >> pointsBalance[j];
                     int tempo; //variable that stores the old CCpoints of customer
                     tempo = pointsBalance[j];
                     if (pointsBalance[j] >= 0) //check whether the input is valid
@@ -650,7 +642,6 @@ void R4(string InputID) {
                         cout << "Invalid input , the CC Points value should be positive." << endl;
                         cout << "return to customer view" << endl;
                     }
-                    cin >> pointsBalance[j];
                     cout << "Sucess, the new CC Points Balance is :" << pointsBalance[j]
                         << endl;
                     R5ModifyCCPoints2(j, ModifyTemp[j], pointsBalance[j]);
